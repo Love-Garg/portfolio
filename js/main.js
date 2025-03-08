@@ -229,7 +229,7 @@
 	  
 		  $.ajax({
 			type: "POST",
-			url: "https://script.google.com/macros/s/AKfycbwiaNMBZrfkIO0RvoAXPeS1YE_s8atETkoNZKykmpqkeDZ-QQhrabbToKl6jgJWmTCmKQ/exec",
+			url: "https://script.google.com/macros/s/AKfycbwNK-nL9HEJC5e2P2mvHNP2SgURLv-_wBQEQBjl6PiZvEuKYpyvzPWo6FEVNyCiXSCuyw/exec",
 			data: JSON.stringify(formData),
 			contentType: "application/json",
 			beforeSend: function() {
