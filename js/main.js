@@ -227,33 +227,40 @@
 			contactMessage: $('#contactMessage').val()
 		  };
 	  
-		  $.ajax({
-			type: "POST",
-			url: "https://script.google.com/macros/s/AKfycbwNK-nL9HEJC5e2P2mvHNP2SgURLv-_wBQEQBjl6PiZvEuKYpyvzPWo6FEVNyCiXSCuyw/exec",
-			data: JSON.stringify(formData),
-			contentType: "application/json",
-			beforeSend: function() {
-			  sLoader.fadeIn();
+		  fetch('https://script.google.com/macros/s/AKfycbwiaNMBZrfkIO0RvoAXPeS1YE_s8atETkoNZKykmpqkeDZ-QQhrabbToKl6jgJWmTCmKQ/exec', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json',
 			},
-			success: function(response) {
-			  sLoader.fadeOut();
-			  if (response.result === 'success') {
-				$('#message-warning').hide();
-				$('#contactForm').fadeOut();
-				$('#message-success').fadeIn();
-			  } else {
-				$('#message-warning').html("An error occurred. Please try again.");
-				$('#message-warning').fadeIn();
-			  }
-			},
-			error: function() {
-			  sLoader.fadeOut();
-			  $('#message-warning').html("Something went wrong. Please try again.");
-			  $('#message-warning').fadeIn();
+			body: JSON.stringify(formData)
+		  })
+		  .then(response => {
+			if (!response.ok) {
+			  throw new Error('Network response was not ok');
 			}
+			return response.json();
+		  })
+		  .then(data => {
+			sLoader.fadeOut();
+			if (data.result === 'success') {
+			  $('#message-warning').hide();
+			  $('#contactForm').fadeOut();
+			  $('#message-success').fadeIn();
+			} else {
+			  throw new Error('Submission failed');
+			}
+		  })
+		  .catch(error => {
+			sLoader.fadeOut();
+			$('#message-warning').html("An error occurred. Please try again.");
+			$('#message-warning').fadeIn();
+			console.error('Error:', error);
 		  });
+	  
+		  sLoader.fadeIn();
 		}
 	  });
+	  
 	  
 
 
