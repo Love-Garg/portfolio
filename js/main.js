@@ -229,6 +229,7 @@
 	  
 		  fetch('https://script.google.com/macros/s/AKfycbwiaNMBZrfkIO0RvoAXPeS1YE_s8atETkoNZKykmpqkeDZ-QQhrabbToKl6jgJWmTCmKQ/exec', {
 			method: 'POST',
+			mode: 'no-cors',
 			headers: {
 			  'Content-Type': 'application/json',
 			},
