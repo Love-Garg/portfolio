@@ -236,8 +236,23 @@
 			},
 			body: JSON.stringify(formData)
 		  })
-		  .then(response => console.log('Success:', response))
-		  .catch(error => console.error('Error:', error));
+		  .then(response => {
+			sLoader.fadeOut();
+			console.log('Success:', response)
+			$('#message-warning').hide();
+ 			$('#contactForm').fadeOut();
+ 			$('#message-success').fadeIn();
+
+		  })
+		  .catch(error => {
+			sLoader.fadeOut();
+			$('#message-warning').html("An error occurred. Please try again.");
+ 			$('#message-warning').fadeIn();
+			console.error('Error:', error)
+
+		  });
+
+		  sLoader.fadeIn();
 		}
 	  });
 	  
