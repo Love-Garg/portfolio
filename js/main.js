@@ -226,6 +226,7 @@
 			contactSubject: $('#contactSubject').val(),
 			contactMessage: $('#contactMessage').val()
 		  };
+		  console.log(formData)
 	  
 		  fetch('https://script.google.com/macros/s/AKfycbwNK-nL9HEJC5e2P2mvHNP2SgURLv-_wBQEQBjl6PiZvEuKYpyvzPWo6FEVNyCiXSCuyw/exec', {
 			method: 'POST',
