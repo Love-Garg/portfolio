@@ -236,30 +236,8 @@
 			},
 			body: JSON.stringify(formData)
 		  })
-		  .then(response => {
-			if (!response.ok) {
-			  throw new Error('Network response was not ok');
-			}
-			return response.json();
-		  })
-		  .then(data => {
-			sLoader.fadeOut();
-			if (data.result === 'success') {
-			  $('#message-warning').hide();
-			  $('#contactForm').fadeOut();
-			  $('#message-success').fadeIn();
-			} else {
-			  throw new Error('Submission failed');
-			}
-		  })
-		  .catch(error => {
-			sLoader.fadeOut();
-			$('#message-warning').html("An error occurred. Please try again.");
-			$('#message-warning').fadeIn();
-			console.error('Error:', error);
-		  });
-	  
-		  sLoader.fadeIn();
+		  .then(response => console.log('Success:', response))
+		  .catch(error => console.error('Error:', error));
 		}
 	  });
 	  
